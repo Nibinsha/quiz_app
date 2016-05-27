@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>quize</title>
+    </head>
+
+    <body>
+        <script src="{% static 'js/jquery.js' %}"></script>
+     
+       {% for quest in questions%}
+        <li>---->{{ quest.question }}</li><br>
+        a  {{quest.option1}} <input type="checkbox" id ={{quest.option1}}  value={{quest.option1}}>
+        b  {{quest.option2}} <input type="checkbox" id={{quest.option2}} value={{quest.option2}}>
+        c  {{quest.option3}} <input type="checkbox" id={{quest.option3}} value={{quest.option3}}>
+        d  {{quest.option4}} <input type="checkbox" id={{quest.option4}} value={{quest.option4}}>
+        <br> 
+        <input type = "hidden" id={{quest.correct_ans}}  value = {{quest.correct_ans}}>
+        
+            
+        {% endfor %}
+
+<form action="submit/" class="form-horizontal" method="post">{% csrf_token %}
+    
+    <div class="form-actions">
+     
+        
+        <button type="/submit/" class="btn btn-primary" value="Submit">Submit</button>
+    </div>
+</form>
+       
+    </body>
+</html>          
